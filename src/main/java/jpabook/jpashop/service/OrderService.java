@@ -48,6 +48,7 @@ public class OrderService {
     /**
      * 주문 취소
      */
+    @Transactional
     public void cancelOrder(Long orderId) {
         // 주문 엔티티 조회
         Order order = orderRepository.findOne(orderId);
@@ -59,7 +60,7 @@ public class OrderService {
     /**
      * 주문 검색
      */
-/*    public List<Order> findOrders(OrderSearch orderSearch) {
-        return orderRepository.findAll(orderSearch);
-    }*/
+    public List<Order> findOrders(OrderSearch orderSearch) {
+        return orderRepository.findAllByString(orderSearch);
+    }
 }
